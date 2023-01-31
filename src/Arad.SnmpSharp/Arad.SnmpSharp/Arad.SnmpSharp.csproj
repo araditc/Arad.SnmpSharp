@@ -11,7 +11,7 @@
 		<AssemblyTitle>Arad.SnmpSharp</AssemblyTitle>
 		<Authors>Ammar Heidari</Authors>
 		<PackageTags>c-sharp dotnet dotnetcore snmp dotnet-core snmp-agent snmpv2-trap dotnet-standard snmpv1 snmpv3 dotnet-framework snmpv2 snmp-library</PackageTags>
-		<PackageProjectUrl>https://arad-itc.com/</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/araditc/Arad.SnmpSharp</PackageProjectUrl>
 		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<SignAssembly>True</SignAssembly>
