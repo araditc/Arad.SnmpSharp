@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFrameworks>net461;netcoreapp3.1;net5.0;net6.0;</TargetFrameworks>
+  </PropertyGroup>
+	<PropertyGroup>
+		<Title>Arad.SnmpSharp library</Title>
+		<Company>Arad ITC</Company>
+		<Description>.NET implementation of SNMP protocol V1,V2 and V3</Description>
+		<Copyright>Copyright (c) 2023 Arad ITC</Copyright>
+		<AssemblyTitle>Arad.SnmpSharp</AssemblyTitle>
+		<Authors>Ammar Heidari</Authors>
+		<PackageTags>c-sharp dotnet dotnetcore snmp dotnet-core snmp-agent snmpv2-trap dotnet-standard snmpv1 snmpv3 dotnet-framework snmpv2 snmp-library</PackageTags>
+		<PackageProjectUrl>https://arad-itc.com/</PackageProjectUrl>
+		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>keyPair.snk</AssemblyOriginatorKeyFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<PackageLicenseFile>COPYING</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="COPYING" Pack="True" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="snmp.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+</Project>
