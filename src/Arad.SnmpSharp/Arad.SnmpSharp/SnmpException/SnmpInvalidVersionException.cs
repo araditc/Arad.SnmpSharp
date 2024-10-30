@@ -14,20 +14,19 @@
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-namespace Arad.SnmpSharp.SnmpException
+namespace Arad.SnmpSharp.SnmpException;
+
+/// <summary>
+/// Exception thrown when invalid SNMP version was encountered in the packet
+/// </summary>
+public class SnmpInvalidVersionException: SnmpException
 {
-	/// <summary>
-	/// Exception thrown when invalid SNMP version was encountered in the packet
-	/// </summary>
-	public class SnmpInvalidVersionException: SnmpException
-	{
-		/// <summary>
-		/// Standard constructor
-		/// </summary>
-		/// <param name="msg">Exception error message</param>
-		public SnmpInvalidVersionException(string msg)
-			: base(msg)
-		{
+    /// <summary>
+    /// Standard constructor
+    /// </summary>
+    /// <param name="msg">Exception error message</param>
+    public SnmpInvalidVersionException(string msg)
+        : base(msg)
+    {
 		}
-	}
 }

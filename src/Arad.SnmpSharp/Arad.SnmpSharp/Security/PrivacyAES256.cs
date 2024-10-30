@@ -14,31 +14,30 @@
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-namespace Arad.SnmpSharp.Security
+namespace Arad.SnmpSharp.Security;
+
+/// <summary>
+/// Privacy class for AES 256-bit encryption. This is a helper class. Full functionality is implemented
+/// in <see cref="PrivacyAES"/> parent class.
+/// </summary>
+public class PrivacyAES256:PrivacyAES
 {
-	/// <summary>
-	/// Privacy class for AES 256-bit encryption. This is a helper class. Full functionality is implemented
-	/// in <see cref="PrivacyAES"/> parent class.
+    /// <summary>
+    /// Standard constructor initializes encryption key size in the parent <see cref="PrivacyAES"/> class to 32 bytes (256 bit).
     /// </summary>
-	public class PrivacyAES256:PrivacyAES
-	{
-		/// <summary>
-		/// Standard constructor initializes encryption key size in the parent <see cref="PrivacyAES"/> class to 32 bytes (256 bit).
-		/// </summary>
-		public PrivacyAES256()
-			: base(32)
-		{
+    public PrivacyAES256()
+        : base(32)
+    {
 		}
 
-		/// <summary>
-		/// Returns privacy protocol name "AES256".
-		/// </summary>
-		public override string Name
-		{
-			get
-			{
+    /// <summary>
+    /// Returns privacy protocol name "AES256".
+    /// </summary>
+    public override string Name
+    {
+        get
+        {
 				return "AES256";
 			}
-		}
-	}
+    }
 }

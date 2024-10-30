@@ -13,86 +13,84 @@
 // You should have received a copy of the GNU General Public License
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
-using System;
-namespace Arad.SnmpSharp.Types
-{
-	
-	/// <summary>Defines an SNMPv2 Party Clock.</summary>
-	/// <remarks>
-	/// The Party Clock is currently
-	/// Obsolete, but included for backwards compatibility. Obsoleted in RFC 1902.
-	/// </remarks>
-	public class V2PartyClock:UInteger32,ICloneable
-	{
-		/// <summary>Constructor</summary>
-		public V2PartyClock():base()
-		{
-			_asnType = SnmpConstants.SMI_PARTY_CLOCK;
-		}
-		
-		/// <summary>Constructor</summary>
-		/// <param name="second">Class to duplicate</param>
-		public V2PartyClock(V2PartyClock second):base(second)
-		{
-			_asnType = SnmpConstants.SMI_PARTY_CLOCK;
-		}
-		
-		/// <summary>Constructor</summary>
-		/// <param name="uint32">Value to initialize the class with.</param>
-		public V2PartyClock(UInteger32 uint32):base(uint32)
-		{
-			_asnType = SnmpConstants.SMI_PARTY_CLOCK;
-		}
 
-		/// <summary>Clone class</summary>
-		/// <returns>Cloned class cast as object</returns>
-		public override System.Object Clone()
-		{
-			return new V2PartyClock(this);
-		}
+namespace Arad.SnmpSharp.Types;
+
+/// <summary>Defines an SNMPv2 Party Clock.</summary>
+/// <remarks>
+/// The Party Clock is currently
+/// Obsolete, but included for backwards compatibility. Obsoleted in RFC 1902.
+/// </remarks>
+public class V2PartyClock:UInteger32,ICloneable
+{
+    /// <summary>Constructor</summary>
+    public V2PartyClock():base()
+    {
+        _asnType = SnmpConstants.SMI_PARTY_CLOCK;
+    }
 		
-		/// <summary>Returns the string representation of the object.</summary>
-		/// <returns>string representation of the class value.</returns>
-		public override string ToString()
-		{
-			System.Text.StringBuilder buf = new System.Text.StringBuilder();
-			long time = Value;
-			long tmp = 0;
-			if ((tmp = (time / (24 * 3600 * 100))) > 0)
-			{
-				buf.Append(tmp).Append("d ");
-				time = time % (24 * 3600 * 100);
-			}
-			else
-				buf.Append("0d ");
+    /// <summary>Constructor</summary>
+    /// <param name="second">Class to duplicate</param>
+    public V2PartyClock(V2PartyClock second):base(second)
+    {
+        _asnType = SnmpConstants.SMI_PARTY_CLOCK;
+    }
+		
+    /// <summary>Constructor</summary>
+    /// <param name="uint32">Value to initialize the class with.</param>
+    public V2PartyClock(UInteger32 uint32):base(uint32)
+    {
+        _asnType = SnmpConstants.SMI_PARTY_CLOCK;
+    }
+
+    /// <summary>Clone class</summary>
+    /// <returns>Cloned class cast as object</returns>
+    public override System.Object Clone()
+    {
+        return new V2PartyClock(this);
+    }
+		
+    /// <summary>Returns the string representation of the object.</summary>
+    /// <returns>string representation of the class value.</returns>
+    public override string ToString()
+    {
+        System.Text.StringBuilder buf = new();
+        long time = Value;
+        long tmp = 0;
+        if ((tmp = (time / (24 * 3600 * 100))) > 0)
+        {
+            buf.Append(tmp).Append("d ");
+            time = time % (24 * 3600 * 100);
+        }
+        else
+            buf.Append("0d ");
 			
-			if ((tmp = time / (3600 * 100)) > 0)
-			{
-				buf.Append(tmp).Append("h ");
-				time = time % (3600 * 100);
-			}
-			else
-				buf.Append("0h ");
+        if ((tmp = time / (3600 * 100)) > 0)
+        {
+            buf.Append(tmp).Append("h ");
+            time = time % (3600 * 100);
+        }
+        else
+            buf.Append("0h ");
 			
-			if ((tmp = time / 6000) > 0)
-			{
-				buf.Append(tmp).Append("m ");
-				time = time % 6000;
-			}
-			else
-				buf.Append("0m ");
+        if ((tmp = time / 6000) > 0)
+        {
+            buf.Append(tmp).Append("m ");
+            time = time % 6000;
+        }
+        else
+            buf.Append("0m ");
 			
-			if ((tmp = time / 100) > 0)
-			{
-				buf.Append(tmp).Append("s ");
-				time = time % 100;
-			}
-			else
-				buf.Append("0s ");
+        if ((tmp = time / 100) > 0)
+        {
+            buf.Append(tmp).Append("s ");
+            time = time % 100;
+        }
+        else
+            buf.Append("0s ");
 			
-			buf.Append(tmp * 10).Append("ms");
+        buf.Append(tmp * 10).Append("ms");
 			
-			return buf.ToString();
-		}
-	}
+        return buf.ToString();
+    }
 }

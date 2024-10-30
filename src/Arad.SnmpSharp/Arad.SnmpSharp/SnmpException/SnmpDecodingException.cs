@@ -14,20 +14,19 @@
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-namespace Arad.SnmpSharp.SnmpException
+namespace Arad.SnmpSharp.SnmpException;
+
+/// <summary>
+/// Exception thrown on failure to decode BER encoded information.
+/// </summary>
+public class SnmpDecodingException : SnmpException
 {
-	/// <summary>
-	/// Exception thrown on failure to decode BER encoded information.
-	/// </summary>
-	public class SnmpDecodingException : SnmpException
-	{
-		/// <summary>
-		/// standard constructor
-		/// </summary>
-		/// <param name="msg">exception message</param>
-		public SnmpDecodingException(string msg)
-			: base(msg)
-		{
+    /// <summary>
+    /// standard constructor
+    /// </summary>
+    /// <param name="msg">exception message</param>
+    public SnmpDecodingException(string msg)
+        : base(msg)
+    {
 		}
-	}
 }

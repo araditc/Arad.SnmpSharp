@@ -13,63 +13,61 @@
 // You should have received a copy of the GNU General Public License
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
-using System;
-namespace Arad.SnmpSharp.Types
-{
-	
-	
-	/// <summary>SNMPv2 NoSuchObject error</summary>
-	/// <remarks>
-	/// NoSuchObject is returned by the agent in response to a SNMP version 2 request 
-	/// when requested object does not exist in its MIB.
-	/// This value is returned as a <seealso cref="Vb.Value"/> with data of length 0
-	/// 
-	/// For example:
-	/// <code lang="cs">
-	/// // [... prepare for a get operation ...]
-	/// Pdu response = target.Request(outpdu, params);
-	/// foreach(Vb vb in response.VbList) {
-	///		if( vb.Value is NoSuchObject ) {
-	///			return "Requested MIB variable does not exist on the agent.";
-	///		}
-	///	}
-	/// </code>
-	/// </remarks>
-	[Serializable]
-	public class NoSuchObject:V2Error, ICloneable
-	{		
+
+namespace Arad.SnmpSharp.Types;
+
+/// <summary>SNMPv2 NoSuchObject error</summary>
+/// <remarks>
+/// NoSuchObject is returned by the agent in response to a SNMP version 2 request 
+/// when requested object does not exist in its MIB.
+/// This value is returned as a <seealso cref="Vb.Value"/> with data of length 0
+/// 
+/// For example:
+/// <code lang="cs">
+/// // [... prepare for a get operation ...]
+/// Pdu response = target.Request(outpdu, params);
+/// foreach(Vb vb in response.VbList) {
+///		if( vb.Value is NoSuchObject ) {
+///			return "Requested MIB variable does not exist on the agent.";
+///		}
+///	}
+/// </code>
+/// </remarks>
+[Serializable]
+public class NoSuchObject:V2Error, ICloneable
+{		
 		
-		/// <summary>Constructor.</summary>
-		public NoSuchObject():base()
-		{
+    /// <summary>Constructor.</summary>
+    public NoSuchObject():base()
+    {
 			_asnType = SnmpConstants.SMI_NOSUCHOBJECT;
 		}
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="second">
-		/// Source for data to initialize this instance with.
-		/// 
-		/// Irrelevant for this type since no data is stored in the class.
-		/// </param>
-		public NoSuchObject(NoSuchObject second):base(second)
-		{
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="second">
+    /// Source for data to initialize this instance with.
+    /// 
+    /// Irrelevant for this type since no data is stored in the class.
+    /// </param>
+    public NoSuchObject(NoSuchObject second):base(second)
+    {
 		}
 
-		/// <summary> Returns a duplicate object of self.</summary>
-		/// <returns> A duplicate of self</returns>
-		public override Object Clone()
-		{
+    /// <summary> Returns a duplicate object of self.</summary>
+    /// <returns> A duplicate of self</returns>
+    public override Object Clone()
+    {
 			// just create a new object. it doesn't hold any data anyway
 			return new NoSuchObject();
 		}
 
-		/// <summary>Decode ASN.1 encoded no-such-object SNMP version 2 MIB value</summary>
-		/// <param name="buffer">The encoded buffer</param>
-		/// <param name="offset">The offset of the first byte of encoded data</param>
-		/// <returns>Buffer position after the decoded value</returns>
-		public override int decode(byte[] buffer, int offset)
-		{
+    /// <summary>Decode ASN.1 encoded no-such-object SNMP version 2 MIB value</summary>
+    /// <param name="buffer">The encoded buffer</param>
+    /// <param name="offset">The offset of the first byte of encoded data</param>
+    /// <returns>Buffer position after the decoded value</returns>
+    public override int decode(byte[] buffer, int offset)
+    {
 			int headerLength;
 			byte asnType = ParseHeader(buffer, ref offset, out headerLength);
 			if (asnType != Type)
@@ -81,20 +79,19 @@ namespace Arad.SnmpSharp.Types
 			return offset;
 		}
 
-		/// <summary>
-		/// ASN.1 encode no-such-object SNMP version 2 MIB value
-		/// </summary>
-		/// <param name="buffer">MutableByte reference to append encoded variable to</param>
-		public override void encode(MutableByte buffer)
-		{
+    /// <summary>
+    /// ASN.1 encode no-such-object SNMP version 2 MIB value
+    /// </summary>
+    /// <param name="buffer">MutableByte reference to append encoded variable to</param>
+    public override void encode(MutableByte buffer)
+    {
 			BuildHeader(buffer, Type, 0);
 		}
 		
-		/// <summary> Returns the string representation of the object.</summary>
-		/// <returns>string representation of the class</returns>
-		public override string ToString()
-		{
+    /// <summary> Returns the string representation of the object.</summary>
+    /// <returns>string representation of the class</returns>
+    public override string ToString()
+    {
 			return "SNMP No-Such-Object";
 		}
-	}
 }

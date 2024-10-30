@@ -14,24 +14,23 @@
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-namespace Arad.SnmpSharp
+namespace Arad.SnmpSharp;
+
+/// <summary>
+/// SNMP Version number enumeration
+/// </summary>
+public enum SnmpVersion
 {
     /// <summary>
-    /// SNMP Version number enumeration
+    /// SNMP version 1
     /// </summary>
-    public enum SnmpVersion
-    {
-        /// <summary>
-        /// SNMP version 1
-        /// </summary>
-        Ver1 = 0,
-        /// <summary>
-        /// SNMP version 2c
-        /// </summary>
-        Ver2 = 1,
-        /// <summary>
-        /// SNMP version 3
-        /// </summary>
-        Ver3 = 3
-    }
+    Ver1 = 0,
+    /// <summary>
+    /// SNMP version 2c
+    /// </summary>
+    Ver2 = 1,
+    /// <summary>
+    /// SNMP version 3
+    /// </summary>
+    Ver3 = 3
 }

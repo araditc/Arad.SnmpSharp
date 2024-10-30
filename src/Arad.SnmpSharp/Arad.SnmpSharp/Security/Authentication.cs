@@ -14,50 +14,49 @@
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-namespace Arad.SnmpSharp.Security
-{
-	/// <summary>Authentication helper class</summary>
-	/// <remarks>
-	/// Helper class to make dealing with multiple (if 2 qualifies as multiple) authentication protocols in a
-	/// transparent way.
-	/// 
-	/// Calling class keeps the authentication protocol selection (as defined on the agent) in an integer
-	/// variable that can have 3 values: <see cref="AuthenticationDigests.None"/>, <see cref="AuthenticationDigests.MD5"/>, or
-	/// <see cref="AuthenticationDigests.SHA1"/>. Using <see cref="Authentication.GetInstance"/>, calling method can
-	/// get authentication protocol implementation class instance cast as <see cref="IAuthenticationDigest"/> interface
-	/// and perform authentication operations (either authenticate outgoing packets to verify authentication of incoming packets)
-	/// without needing to further care about which authentication protocol is used.
-	/// 
-	/// Example of how to use this class:
-	/// <code>
-	/// IAuthenticationDigest authenticationImplementation = Authentication.GetInstance(AuthenticationDigests.MD5);
-	/// authenticationImplementation.authenticateIncomingMsg(...);
-	/// authenticationImplementation.authenticateOutgoingMsg(...);
-	/// </code>
-	/// </remarks>
-	public sealed class Authentication
-	{
+namespace Arad.SnmpSharp.Security;
 
-		/// <summary>
-		/// Get instance of authentication protocol.
-		/// </summary>
-		/// <param name="authProtocol">Authentication protocol code. Available codes are <see cref="AuthenticationDigests.MD5"/>,
-		/// <see cref="AuthenticationDigests.SHA1"/> or <see cref="AuthenticationDigests.None"/></param>
-		/// <returns>Instance of the authentication protocol or null if unrecognized authentication protocol or value
-		/// <see cref="AuthenticationDigests.None"/> is passed.</returns>
-		public static IAuthenticationDigest GetInstance(AuthenticationDigests authProtocol)
-		{
+/// <summary>Authentication helper class</summary>
+/// <remarks>
+/// Helper class to make dealing with multiple (if 2 qualifies as multiple) authentication protocols in a
+/// transparent way.
+/// 
+/// Calling class keeps the authentication protocol selection (as defined on the agent) in an integer
+/// variable that can have 3 values: <see cref="AuthenticationDigests.None"/>, <see cref="AuthenticationDigests.MD5"/>, or
+/// <see cref="AuthenticationDigests.SHA1"/>. Using <see cref="Authentication.GetInstance"/>, calling method can
+/// get authentication protocol implementation class instance cast as <see cref="IAuthenticationDigest"/> interface
+/// and perform authentication operations (either authenticate outgoing packets to verify authentication of incoming packets)
+/// without needing to further care about which authentication protocol is used.
+/// 
+/// Example of how to use this class:
+/// <code>
+/// IAuthenticationDigest authenticationImplementation = Authentication.GetInstance(AuthenticationDigests.MD5);
+/// authenticationImplementation.authenticateIncomingMsg(...);
+/// authenticationImplementation.authenticateOutgoingMsg(...);
+/// </code>
+/// </remarks>
+public sealed class Authentication
+{
+
+    /// <summary>
+    /// Get instance of authentication protocol.
+    /// </summary>
+    /// <param name="authProtocol">Authentication protocol code. Available codes are <see cref="AuthenticationDigests.MD5"/>,
+    /// <see cref="AuthenticationDigests.SHA1"/> or <see cref="AuthenticationDigests.None"/></param>
+    /// <returns>Instance of the authentication protocol or null if unrecognized authentication protocol or value
+    /// <see cref="AuthenticationDigests.None"/> is passed.</returns>
+    public static IAuthenticationDigest GetInstance(AuthenticationDigests authProtocol)
+    {
 			if (authProtocol == AuthenticationDigests.MD5)
 				return new AuthenticationMD5();
 			else if (authProtocol == AuthenticationDigests.SHA1)
 				return new AuthenticationSHA1();
 			return null;
 		}
-		/// <summary>
-		/// Constructor. Private to prevent the class from being instantiated.
-		/// </summary>
-		private Authentication()
-		{
+    /// <summary>
+    /// Constructor. Private to prevent the class from being instantiated.
+    /// </summary>
+    private Authentication()
+    {
 		}
-	}
 }

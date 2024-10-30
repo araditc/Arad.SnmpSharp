@@ -13,62 +13,58 @@
 // You should have received a copy of the GNU General Public License
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
-using System;
-using System.Text;
-namespace Arad.SnmpSharp.Types
+
+namespace Arad.SnmpSharp.Types;
+
+/// <summary>Opaque type is an application-wide type supports the capability to pass arbitrary
+/// ASN.1 syntax</summary>
+/// <remarks>SMIv2 defines Opaque type as provided solely for backward-compatibility, and
+/// shall not be used for newly-defined object types</remarks>
+[Serializable]
+public class Opaque : Octetstring, System.ICloneable
 {
+    /// <summary>Constructor</summary>
+    public Opaque():base()
+    {
+        _asnType = SnmpConstants.SMI_OPAQUE;
+    }
+		
+    /// <summary>Constructor</summary>
+    /// <param name="data">Data</param>
+    public Opaque(byte[] data):base(data)
+    {
+        _asnType = SnmpConstants.SMI_OPAQUE;
+    }
+		
+    /// <summary>Copy constructor</summary>
+    /// <param name="second">The object to be duplicated.</param>
+    public Opaque(Opaque second):base(second)
+    {
+        _asnType = SnmpConstants.SMI_OPAQUE;
+    }
+		
+    /// <summary>Constructor</summary>
+    /// <param name="second">The object to be duplicated.</param>
+    public Opaque(Octetstring second)
+        : base(second)
+    {
+        _asnType = SnmpConstants.SMI_OPAQUE;
+    }
 
-
-	/// <summary>Opaque type is an application-wide type supports the capability to pass arbitrary
-	/// ASN.1 syntax</summary>
-	/// <remarks>SMIv2 defines Opaque type as provided solely for backward-compatibility, and
-	/// shall not be used for newly-defined object types</remarks>
-	[Serializable]
-	public class Opaque : Octetstring, System.ICloneable
-	{
-		/// <summary>Constructor</summary>
-		public Opaque():base()
-		{
-			_asnType = SnmpConstants.SMI_OPAQUE;
-		}
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="value">Initializer value</param>
+    public Opaque(string value)
+        : base(value)
+    {
+        _asnType = SnmpConstants.SMI_OPAQUE;
+    }
 		
-		/// <summary>Constructor</summary>
-		/// <param name="data">Data</param>
-		public Opaque(byte[] data):base(data)
-		{
-			_asnType = SnmpConstants.SMI_OPAQUE;
-		}
-		
-		/// <summary>Copy constructor</summary>
-		/// <param name="second">The object to be duplicated.</param>
-		public Opaque(Opaque second):base(second)
-		{
-			_asnType = SnmpConstants.SMI_OPAQUE;
-		}
-		
-		/// <summary>Constructor</summary>
-		/// <param name="second">The object to be duplicated.</param>
-		public Opaque(Octetstring second)
-			: base(second)
-		{
-			_asnType = SnmpConstants.SMI_OPAQUE;
-		}
-
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="value">Initializer value</param>
-		public Opaque(string value)
-			: base(value)
-		{
-			_asnType = SnmpConstants.SMI_OPAQUE;
-		}
-		
-		/// <summary>Returns a duplicate of the current object.</summary>
-		/// <returns>Copy of the current object cast as Object</returns>
-		public override Object Clone()
-		{
-			return new Opaque(this);
-		}
-	}
+    /// <summary>Returns a duplicate of the current object.</summary>
+    /// <returns>Copy of the current object cast as Object</returns>
+    public override Object Clone()
+    {
+        return new Opaque(this);
+    }
 }

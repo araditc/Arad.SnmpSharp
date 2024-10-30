@@ -13,69 +13,68 @@
 // You should have received a copy of the GNU General Public License
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
-using System;
-namespace Arad.SnmpSharp.Types
+
+namespace Arad.SnmpSharp.Types;
+
+/// <summary>ASN.1 Gauge32 value class.
+/// </summary>
+[Serializable]
+public class Gauge32:UInteger32, ICloneable
 {
-	/// <summary>ASN.1 Gauge32 value class.
-	/// </summary>
-	[Serializable]
-	public class Gauge32:UInteger32, ICloneable
-	{
-		/// <summary> Constructs the default counter object.
-		/// The initial value is defined
-		/// by the super class default constructor
-		/// </summary>
-		public Gauge32():base()
-		{
+    /// <summary> Constructs the default counter object.
+    /// The initial value is defined
+    /// by the super class default constructor
+    /// </summary>
+    public Gauge32():base()
+    {
 			_asnType = SnmpConstants.SMI_GAUGE32;
 		}
 		
 		
-		/// <summary> Constructs a new object with the same value
-		/// as the passed object.
-		/// </summary>
-		/// <param name="second">The object to recover values from.
-		/// </param>
-		public Gauge32(Gauge32 second):base(second)
-		{
+    /// <summary> Constructs a new object with the same value
+    /// as the passed object.
+    /// </summary>
+    /// <param name="second">The object to recover values from.
+    /// </param>
+    public Gauge32(Gauge32 second):base(second)
+    {
 			_asnType = SnmpConstants.SMI_GAUGE32;
 		}
 		
-		/// <summary> Constructs a new object with the value
-		/// constrained in the UInteger32 object.
-		/// </summary>
-		/// <param name="uint32">The UInteger32 object to copy.
-		/// </param>
-		public Gauge32(UInteger32 uint32):base(uint32)
-		{
+    /// <summary> Constructs a new object with the value
+    /// constrained in the UInteger32 object.
+    /// </summary>
+    /// <param name="uint32">The UInteger32 object to copy.
+    /// </param>
+    public Gauge32(UInteger32 uint32):base(uint32)
+    {
 			_asnType = SnmpConstants.SMI_GAUGE32;
 		}
 		
-		/// <summary>Constructor. Initialize class value with the unsigned integer 32-bit value
-		/// encoded as string in the argument.
-		/// </summary>
-		/// <param name="val">32-bit unsigned integer encoded as a string
-		/// </param>
-		public Gauge32(string val):base(val)
-		{
+    /// <summary>Constructor. Initialize class value with the unsigned integer 32-bit value
+    /// encoded as string in the argument.
+    /// </summary>
+    /// <param name="val">32-bit unsigned integer encoded as a string
+    /// </param>
+    public Gauge32(string val):base(val)
+    {
 			_asnType = SnmpConstants.SMI_GAUGE32;
 		}
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="val">Initializing value</param>
-		public Gauge32(UInt32 val):base(val)
-		{
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="val">Initializing value</param>
+    public Gauge32(UInt32 val):base(val)
+    {
 			_asnType = SnmpConstants.SMI_GAUGE32;
 		}
 		
-		/// <summary>Duplicate current object.
-		/// </summary>
-		/// <returns>Copy of the object.</returns>
-		public override System.Object Clone()
-		{
+    /// <summary>Duplicate current object.
+    /// </summary>
+    /// <returns>Copy of the object.</returns>
+    public override System.Object Clone()
+    {
 			return new Gauge32(this);
 		}
-	}
 }

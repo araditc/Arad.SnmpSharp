@@ -14,45 +14,42 @@
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-using System;
+namespace Arad.SnmpSharp.SnmpException;
 
-namespace Arad.SnmpSharp.SnmpException
+/// <summary>SNMP network exception</summary>
+/// <remarks>
+/// Exception thrown when network error was encountered. Network errors include host, network unreachable, connection refused, etc.
+/// 
+/// One network exception that is not covered by this exception is request timeout.
+/// </remarks>
+public class SnmpNetworkException: SnmpException
 {
-	/// <summary>SNMP network exception</summary>
-	/// <remarks>
-	/// Exception thrown when network error was encountered. Network errors include host, network unreachable, connection refused, etc.
-	/// 
-	/// One network exception that is not covered by this exception is request timeout.
-	/// </remarks>
-	public class SnmpNetworkException: SnmpException
-	{
-		private System.Exception _systemException;
-		/// <summary>
-		/// Return system exception that caused raising of this Exception error.
-		/// </summary>
-		public Exception SystemException
-		{
-			get { return _systemException; }
-		}
-		/// <summary>
-		/// Standard constructor
-		/// </summary>
-		/// <param name="sysException">System exception that caused the error</param>
-		/// <param name="msg">Error message</param>
-		public SnmpNetworkException(Exception sysException, string msg)
-			: base(msg)
-		{
+    private System.Exception _systemException;
+    /// <summary>
+    /// Return system exception that caused raising of this Exception error.
+    /// </summary>
+    public Exception SystemException
+    {
+        get { return _systemException; }
+    }
+    /// <summary>
+    /// Standard constructor
+    /// </summary>
+    /// <param name="sysException">System exception that caused the error</param>
+    /// <param name="msg">Error message</param>
+    public SnmpNetworkException(Exception sysException, string msg)
+        : base(msg)
+    {
 			_systemException = sysException;
 		}
-		/// <summary>
-		/// Constructor. Used when system exception did not cause the error and there is no parent
-		/// exception associated with the error.
-		/// </summary>
-		/// <param name="msg">Error message</param>
-		public SnmpNetworkException(string msg)
-			: base(msg)
-		{
+    /// <summary>
+    /// Constructor. Used when system exception did not cause the error and there is no parent
+    /// exception associated with the error.
+    /// </summary>
+    /// <param name="msg">Error message</param>
+    public SnmpNetworkException(string msg)
+        : base(msg)
+    {
 			_systemException = null;
 		}
-	}
 }

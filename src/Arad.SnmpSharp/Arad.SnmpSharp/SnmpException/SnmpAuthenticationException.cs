@@ -14,21 +14,20 @@
 // along with Arad.SnmpSharp.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-namespace Arad.SnmpSharp.SnmpException
+namespace Arad.SnmpSharp.SnmpException;
+
+/// <summary>
+/// Exception of this type is thrown when SNMP version 3 packet containing authentication information
+/// has failed authentication check.
+/// </summary>
+public class SnmpAuthenticationException: SnmpException
 {
-	/// <summary>
-	/// Exception of this type is thrown when SNMP version 3 packet containing authentication information
-	/// has failed authentication check.
-	/// </summary>
-	public class SnmpAuthenticationException: SnmpException
-	{
-		/// <summary>
-		/// Standard constructor.
-		/// </summary>
-		/// <param name="msg">Error message</param>
-		public SnmpAuthenticationException(string msg)
-			: base(msg)
-		{
+    /// <summary>
+    /// Standard constructor.
+    /// </summary>
+    /// <param name="msg">Error message</param>
+    public SnmpAuthenticationException(string msg)
+        : base(msg)
+    {
 		}
-	}
 }
